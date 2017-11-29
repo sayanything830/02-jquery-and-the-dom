@@ -48,12 +48,20 @@ rawData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
 
-// TODO: Refactor these for loops using the .forEach() array method.
+// DONE: Refactor these for loops using the .forEach() array method.
 
-for(let i = 0; i < rawData.length; i++) {
-  articles.push(new Article(rawData[i]));
-}
+// for(let i = 0; i < rawData.length; i++) {
+//   articles.push(new Article(rawData[i]));
+// }
 
-for(let i = 0; i < articles.length; i++) {
-  $('#articles').append(articles[i].toHtml());
-}
+rawData.forEach(function() {
+  articles.push(new Article(rawData));
+})
+
+// for(let i = 0; i < articles.length; i++) {
+//   $('#articles').append(articles[i].toHtml());
+// }
+
+articles.forEach(function() {
+  $('#articles').append(articles.toHtml());
+})
